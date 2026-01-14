@@ -11,29 +11,52 @@ Helm charts for demonstrating llm-d's intelligent routing vs vanilla vLLM, deplo
 | `llm-d` | llm-d with intelligent prefix-aware routing |
 | `benchmark` | Configurable benchmark job (target: vllm or llm-d) |
 
+## Prerequisites for Click-Ops Deployment
+
+**Important**: Before installing charts via the OpenShift Developer Console (click-ops), you must create the target namespaces first. The console requires the namespace to exist to track Helm release status.
+
+```bash
+# Create required namespaces
+oc create namespace llm-d-monitoring
+oc create namespace demo-llm
+```
+
+| Chart | Target Namespace |
+|-------|-----------------|
+| `monitoring` | `llm-d-monitoring` |
+| `vllm-baseline` | `demo-llm` |
+| `llm-d` | `demo-llm` |
+| `benchmark` | `demo-llm` |
+
+> **Note**: CLI installation with `helm install --create-namespace` does not require pre-creating namespaces.
+
 ## Workshop Flow
 
 ### Step 1: Deploy Monitoring
 Install the **monitoring** chart first to set up Prometheus and Grafana.
 
-1. Go to **Developer Console → +Add → Helm Chart**
-2. Select **LLM-D Demo Charts → Monitoring**
-3. Click **Install**
+1. Create the namespace: `oc create namespace llm-d-monitoring`
+2. Go to **Developer Console → +Add → Helm Chart**
+3. Switch to project **llm-d-monitoring** in the project dropdown
+4. Select **LLM-D Demo Charts → Llm D Monitoring**
+5. Click **Install**
 4. Once deployed, click the Grafana route and login with `admin` / `admin`
 5. Navigate to **Dashboards → LLM Performance Dashboard**
 
 ### Step 2: Deploy vLLM Baseline
 Install vanilla vLLM to establish baseline performance.
 
-1. Go to **Developer Console → +Add → Helm Chart**
-2. Select **LLM-D Demo Charts → vLLM Baseline**
-3. Configure replicas (default: 4)
-4. Click **Install**
-5. Wait for all pods to be ready
+1. Create the namespace (if not done): `oc create namespace demo-llm`
+2. Go to **Developer Console → +Add → Helm Chart**
+3. Switch to project **demo-llm** in the project dropdown
+4. Select **LLM-D Demo Charts → Vllm Baseline**
+5. Configure replicas (default: 4)
+6. Click **Install**
+7. Wait for all pods to be ready
 
 ### Step 3: Run Benchmark Against vLLM
-1. Go to **Developer Console → +Add → Helm Chart**
-2. Select **LLM-D Demo Charts → Benchmark**
+1. Go to **Developer Console → +Add → Helm Chart** (ensure **demo-llm** project is selected)
+2. Select **LLM-D Demo Charts → Llm D Benchmark**
 3. Set **Target** dropdown to `vllm`
 4. Adjust duration and concurrency as desired
 5. Click **Install**
@@ -46,14 +69,14 @@ Install vanilla vLLM to establish baseline performance.
 3. Uninstall the **vllm-baseline** release
 
 ### Step 5: Deploy llm-d
-1. Go to **Developer Console → +Add → Helm Chart**
-2. Select **LLM-D Demo Charts → llm-d**
-3. Configure replicas (default: 4)
+1. Go to **Developer Console → +Add → Helm Chart** (ensure **demo-llm** project is selected)
+2. Select **LLM-D Demo Charts → Llm D**
+3. Configure replicas (default: 2)
 4. Click **Install**
 5. Wait for all pods to be ready
 
 ### Step 6: Run Benchmark Against llm-d
-1. Install the **Benchmark** chart again
+1. Install the **Llm D Benchmark** chart again (in **demo-llm** project)
 2. Set **Target** dropdown to `llm-d`
 3. Click **Install**
 4. Watch the Job logs
