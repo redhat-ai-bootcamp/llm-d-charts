@@ -1,0 +1,36 @@
+{{- if eq .Values.benchmarkType "multi-turn" }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "benchmark.jobName" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ include "benchmark.jobName" . }}
+    benchmark-target: {{ .Values.target }}
+    {{- include "benchmark.labels" . | nindent 4 }}
+spec:
+  backoffLimit: {{ .Values.job.backoffLimit }}
+  ttlSecondsAfterFinished: {{ .Values.job.ttlSecondsAfterFinished }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "benchmark.jobName" . }}
+        benchmark-target: {{ .Values.target }}
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: benchmark
+          image: {{ .Values.multiTurn.image }}
+          args:
+            - {{ include "benchmark.targetEndpoint" . | quote }}
+            - "-t {{ .Values.multiTurn.threads }}"
+            - "-p {{ .Values.multiTurn.pairs }}"
+            - "-m {{ .Values.multiTurn.maxTokens }}"
+          resources:
+            requests:
+              cpu: {{ .Values.resources.requests.cpu | quote }}
+              memory: {{ .Values.resources.requests.memory | quote }}
+            limits:
+              cpu: {{ .Values.resources.limits.cpu | quote }}
+              memory: {{ .Values.resources.limits.memory | quote }}
+{{- end }}

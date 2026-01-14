@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "LLM-D Monitoring Configuration",
+  "properties": {
+    "namespace": {
+      "type": "string",
+      "title": "Namespace",
+      "description": "Namespace to deploy monitoring stack",
+      "default": "llm-d-monitoring"
+    },
+    "prometheus": {
+      "type": "object",
+      "title": "Prometheus Configuration",
+      "properties": {
+        "retention": {
+          "type": "string",
+          "title": "Data Retention",
+          "description": "How long to retain metrics data",
+          "default": "15d"
+        }
+      }
+    },
+    "grafana": {
+      "type": "object",
+      "title": "Grafana Configuration",
+      "properties": {
+        "adminUser": {
+          "type": "string",
+          "title": "Admin Username",
+          "default": "admin"
+        },
+        "adminPassword": {
+          "type": "string",
+          "title": "Admin Password",
+          "description": "Initial admin password (change after first login)",
+          "default": "admin"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+apiVersion: v2
+name: vllm-baseline
+description: Vanilla vLLM deployment for baseline performance comparison against llm-d
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - vllm
+  - inference
+  - llm
+  - baseline
+maintainers:
+  - name: FSI Bootcamp Team

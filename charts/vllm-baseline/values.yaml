@@ -1,0 +1,31 @@
+# vLLM Baseline Configuration
+
+namespace: demo-llm
+
+model:
+  # Model to serve (Hugging Face path)
+  name: "Qwen/Qwen3-0.6B"
+  # Maximum model context length
+  maxModelLen: 16000
+
+replicas: 4
+
+resources:
+  requests:
+    cpu: "1"
+    memory: 8Gi
+    gpu: "1"
+  limits:
+    cpu: "1"
+    memory: 8Gi
+    gpu: "1"
+
+# vLLM serving runtime image
+image: "registry.redhat.io/rhaiis/vllm-cuda-rhel9@sha256:ad756c01ec99a99cc7d93401c41b8d92ca96fb1ab7c5262919d818f2be4f3768"
+
+# GPU tolerations
+tolerations:
+  enabled: true
+  key: "nvidia.com/gpu"
+  operator: "Exists"
+  effect: "NoSchedule"

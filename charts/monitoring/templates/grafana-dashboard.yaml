@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-llm-performance
+  namespace: {{ .Values.namespace }}
+  labels:
+    grafana_dashboard: "1"
+data:
+  llm-performance.json: |
+{{ .Files.Get "files/grafana-dashboard-llm-performance.json" | indent 4 }}

@@ -1,0 +1,58 @@
+{{- if eq .Values.benchmarkType "guidellm" }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "benchmark.jobName" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ include "benchmark.jobName" . }}
+    benchmark-target: {{ .Values.target }}
+    {{- include "benchmark.labels" . | nindent 4 }}
+spec:
+  backoffLimit: {{ .Values.job.backoffLimit }}
+  ttlSecondsAfterFinished: {{ .Values.job.ttlSecondsAfterFinished }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "benchmark.jobName" . }}
+        benchmark-target: {{ .Values.target }}
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: guidellm
+        image: {{ .Values.guidellm.image }}
+        env:
+          - name: GUIDELLM_TARGET
+            value: {{ include "benchmark.targetEndpoint" . | quote }}
+          - name: GUIDELLM_PROFILE
+            value: {{ .Values.guidellm.profile | quote }}
+          - name: GUIDELLM_MAX_SECONDS
+            value: {{ .Values.guidellm.maxSeconds | quote }}
+          - name: GUIDELLM_DATA
+            value: "prompt_tokens={{ .Values.guidellm.promptTokens }},output_tokens={{ .Values.guidellm.outputTokens }}"
+          - name: GUIDELLM_PROCESSOR
+            value: {{ .Values.guidellm.processor | quote }}
+          - name: HF_HOME
+            value: /tmp/hf-cache
+          - name: TRANSFORMERS_CACHE
+            value: /tmp/hf-cache
+          - name: XDG_CACHE_HOME
+            value: /tmp
+        resources:
+          requests:
+            cpu: {{ .Values.resources.requests.cpu | quote }}
+            memory: {{ .Values.resources.requests.memory | quote }}
+          limits:
+            cpu: {{ .Values.resources.limits.cpu | quote }}
+            memory: {{ .Values.resources.limits.memory | quote }}
+        volumeMounts:
+          - name: cache
+            mountPath: /tmp/hf-cache
+          - name: results
+            mountPath: /results
+      volumes:
+        - name: cache
+          emptyDir: {}
+        - name: results
+          emptyDir: {}
+{{- end }}

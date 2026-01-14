@@ -1,0 +1,33 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: qwen-vllm
+  namespace: {{ .Values.namespace }}
+  annotations:
+    serving.kserve.io/deploymentMode: RawDeployment
+spec:
+  predictor:
+    automountServiceAccountToken: false
+    maxReplicas: {{ .Values.replicas }}
+    minReplicas: {{ .Values.replicas }}
+    model:
+      modelFormat:
+        name: vLLM
+      name: ''
+      resources:
+        limits:
+          cpu: {{ .Values.resources.limits.cpu | quote }}
+          memory: {{ .Values.resources.limits.memory }}
+          nvidia.com/gpu: {{ .Values.resources.limits.gpu | quote }}
+        requests:
+          cpu: {{ .Values.resources.requests.cpu | quote }}
+          memory: {{ .Values.resources.requests.memory }}
+          nvidia.com/gpu: {{ .Values.resources.requests.gpu | quote }}
+      runtime: vllm-runtime
+      storageUri: 'hf://{{ .Values.model.name }}'
+    {{- if .Values.tolerations.enabled }}
+    tolerations:
+      - key: {{ .Values.tolerations.key | quote }}
+        operator: {{ .Values.tolerations.operator | quote }}
+        effect: {{ .Values.tolerations.effect | quote }}
+    {{- end }}

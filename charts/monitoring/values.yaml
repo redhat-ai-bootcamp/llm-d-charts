@@ -1,0 +1,43 @@
+# Monitoring Stack Configuration
+
+namespace: llm-d-monitoring
+
+prometheus:
+  image: prom/prometheus:v2.45.0
+  retention: 15d
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: "1"
+      memory: 1Gi
+
+grafana:
+  image: grafana/grafana:10.0.0
+  adminUser: admin
+  adminPassword: admin
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+# Scrape targets for vLLM and llm-d metrics
+scrapeTargets:
+  # vLLM metrics endpoint
+  vllm:
+    enabled: true
+    namespace: demo-llm
+    serviceName: qwen-vllm-lb
+    port: 8000
+    path: /metrics
+  # llm-d metrics endpoint  
+  llmd:
+    enabled: true
+    namespace: demo-llm
+    labelSelector: app.kubernetes.io/name=qwen
+    port: 8000
+    path: /metrics

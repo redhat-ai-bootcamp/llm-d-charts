@@ -1,0 +1,14 @@
+apiVersion: v2
+name: llm-d-monitoring
+description: Prometheus and Grafana monitoring stack for LLM performance comparison
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - monitoring
+  - prometheus
+  - grafana
+  - llm
+  - llm-d
+maintainers:
+  - name: FSI Bootcamp Team

@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "llm-d Configuration",
+  "description": "Configuration for llm-d with intelligent prefix-aware routing",
+  "properties": {
+    "namespace": {
+      "type": "string",
+      "title": "Namespace",
+      "description": "Namespace to deploy llm-d",
+      "default": "demo-llm"
+    },
+    "model": {
+      "type": "object",
+      "title": "Model Configuration",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Model Name",
+          "description": "Hugging Face model path (e.g., Qwen/Qwen3-0.6B)",
+          "default": "Qwen/Qwen3-0.6B"
+        },
+        "displayName": {
+          "type": "string",
+          "title": "Display Name",
+          "description": "Display name for the model in OpenShift",
+          "default": "qwen"
+        },
+        "maxModelLen": {
+          "type": "integer",
+          "title": "Max Context Length",
+          "description": "Maximum model context length in tokens",
+          "default": 16000,
+          "minimum": 1024,
+          "maximum": 131072
+        }
+      }
+    },
+    "replicas": {
+      "type": "integer",
+      "title": "Number of Replicas",
+      "description": "Number of model replicas to deploy",
+      "default": 4,
+      "minimum": 1,
+      "maximum": 8
+    },
+    "scheduler": {
+      "type": "object",
+      "title": "Scheduler Configuration",
+      "description": "Weights for intelligent routing plugins",
+      "properties": {
+        "plugins": {
+          "type": "object",
+          "properties": {
+            "queueScorer": {
+              "type": "object",
+              "properties": {
+                "weight": {
+                  "type": "integer",
+                  "title": "Queue Scorer Weight",
+                  "description": "Weight for queue-based scoring (higher = more important)",
+                  "default": 2,
+                  "minimum": 0,
+                  "maximum": 10
+                }
+              }
+            },
+            "kvCacheUtilizationScorer": {
+              "type": "object",
+              "properties": {
+                "weight": {
+                  "type": "integer",
+                  "title": "KV Cache Utilization Weight",
+                  "description": "Weight for KV cache utilization scoring",
+                  "default": 2,
+                  "minimum": 0,
+                  "maximum": 10
+                }
+              }
+            },
+            "prefixCacheScorer": {
+              "type": "object",
+              "properties": {
+                "weight": {
+                  "type": "integer",
+                  "title": "Prefix Cache Scorer Weight",
+                  "description": "Weight for prefix cache scoring (key for llm-d benefits)",
+                  "default": 3,
+                  "minimum": 0,
+                  "maximum": 10
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

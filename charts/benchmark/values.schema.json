@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "LLM-D Benchmark Configuration",
+  "description": "Configure benchmarks to compare vLLM vs llm-d performance",
+  "properties": {
+    "namespace": {
+      "type": "string",
+      "title": "Namespace",
+      "description": "Namespace where the benchmark job will run",
+      "default": "demo-llm"
+    },
+    "target": {
+      "type": "string",
+      "title": "Benchmark Target",
+      "description": "Which deployment to benchmark - vLLM baseline or llm-d with intelligent routing",
+      "enum": ["vllm", "llm-d"],
+      "default": "vllm"
+    },
+    "benchmarkType": {
+      "type": "string",
+      "title": "Benchmark Type",
+      "description": "Type of benchmark to run",
+      "enum": ["multi-turn", "guidellm"],
+      "default": "multi-turn"
+    },
+    "multiTurn": {
+      "type": "object",
+      "title": "Multi-Turn Benchmark Settings",
+      "description": "Configuration for multi-turn conversation benchmark (best for cache efficiency comparison)",
+      "properties": {
+        "threads": {
+          "type": "integer",
+          "title": "Concurrent Threads",
+          "description": "Number of simulated concurrent users",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 50
+        },
+        "pairs": {
+          "type": "integer",
+          "title": "Conversation Pairs",
+          "description": "Number of conversation exchanges per thread",
+          "default": 2,
+          "minimum": 1,
+          "maximum": 10
+        },
+        "maxTokens": {
+          "type": "integer",
+          "title": "Max Tokens",
+          "description": "Maximum tokens per response",
+          "default": 1000,
+          "minimum": 100,
+          "maximum": 4096
+        }
+      }
+    },
+    "guidellm": {
+      "type": "object",
+      "title": "GuideLLM Benchmark Settings",
+      "description": "Configuration for GuideLLM throughput benchmark",
+      "properties": {
+        "profile": {
+          "type": "string",
+          "title": "Benchmark Profile",
+          "description": "GuideLLM benchmark profile to run",
+          "enum": ["sweep", "fixed", "burst"],
+          "default": "sweep"
+        },
+        "maxSeconds": {
+          "type": "integer",
+          "title": "Duration (seconds)",
+          "description": "Maximum benchmark duration",
+          "default": 30,
+          "minimum": 10,
+          "maximum": 300
+        },
+        "promptTokens": {
+          "type": "integer",
+          "title": "Prompt Tokens",
+          "description": "Number of tokens in each prompt",
+          "default": 256,
+          "minimum": 32,
+          "maximum": 2048
+        },
+        "outputTokens": {
+          "type": "integer",
+          "title": "Output Tokens",
+          "description": "Number of tokens to generate per response",
+          "default": 128,
+          "minimum": 16,
+          "maximum": 1024
+        }
+      }
+    },
+    "job": {
+      "type": "object",
+      "title": "Job Configuration",
+      "properties": {
+        "ttlSecondsAfterFinished": {
+          "type": "integer",
+          "title": "TTL After Completion",
+          "description": "Seconds to keep job after completion (for viewing logs)",
+          "default": 86400,
+          "minimum": 300,
+          "maximum": 604800
+        }
+      }
+    }
+  },
+  "required": ["target", "benchmarkType"]
+}

@@ -1,0 +1,63 @@
+# llm-d Configuration
+
+namespace: demo-llm
+
+model:
+  # Model to serve (Hugging Face path)
+  name: "Qwen/Qwen3-0.6B"
+  # Display name for OpenShift
+  displayName: "qwen"
+  # Maximum model context length
+  maxModelLen: 16000
+
+replicas: 4
+
+resources:
+  requests:
+    cpu: "1"
+    memory: 8Gi
+    gpu: "1"
+  limits:
+    cpu: "1"
+    memory: 8Gi
+    gpu: "1"
+
+# GPU tolerations
+tolerations:
+  enabled: true
+  key: "nvidia.com/gpu"
+  operator: "Exists"
+  effect: "NoSchedule"
+
+# Scheduler configuration for intelligent routing
+scheduler:
+  # Weights for different scoring plugins
+  plugins:
+    queueScorer:
+      weight: 2
+    kvCacheUtilizationScorer:
+      weight: 2
+    prefixCacheScorer:
+      weight: 3
+
+# Hardware profile configuration
+hardwareProfile:
+  name: "gpu-profile"
+  namespace: "redhat-ods-applications"
+  cpu:
+    default: "1"
+    min: 1
+    max: 8
+  memory:
+    default: "12Gi"
+    min: "1Gi"
+    max: "16Gi"
+  gpu:
+    default: 1
+    min: 1
+    max: 4
+
+# Gateway configuration
+gateway:
+  className: "openshift-default"
+  namespace: "openshift-ingress"

@@ -1,0 +1,14 @@
+apiVersion: v2
+name: llm-d-benchmark
+description: Benchmark job for comparing vLLM vs llm-d performance
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - benchmark
+  - llm
+  - vllm
+  - llm-d
+  - performance
+maintainers:
+  - name: FSI Bootcamp Team
