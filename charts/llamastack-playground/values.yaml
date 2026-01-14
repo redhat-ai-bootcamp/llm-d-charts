@@ -23,8 +23,8 @@ inference:
 model:
   # Model ID used by Llama Stack
   id: qwen
-  # Provider model ID (HuggingFace model name)
-  providerModelId: Qwen/Qwen2.5-3B-Instruct
+  # Provider model ID (HuggingFace model name) - must match what the backend is serving
+  providerModelId: Qwen/Qwen3-0.6B
 
 # Llama Stack server configuration
 llamastack:
@@ -35,4 +35,4 @@ llamastack:
 # Playground configuration
 playground:
   replicas: 1
-  image: quay.io/redhat-ai-services/llamastack-playground:latest
+  image: quay.io/eformat/streamlit_client:0.2.15

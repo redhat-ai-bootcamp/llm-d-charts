@@ -1,15 +1,71 @@
-apiVersion: llamastack.io/v1alpha1
-kind: LlamaStackDistribution
+# Deploy Llama Stack server as a regular Deployment (bypassing the operator)
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: llamastack
   namespace: {{ .Values.namespace }}
+  labels:
+    app: llamastack
 spec:
   replicas: {{ .Values.llamastack.replicas }}
-  server:
-    containerSpec:
-      name: llama-stack
-      port: {{ .Values.llamastack.port }}
-    distribution:
-      image: {{ .Values.llamastack.image }}
-    userConfig:
-      configMapName: llama-stack-config
+  selector:
+    matchLabels:
+      app: llamastack
+  template:
+    metadata:
+      labels:
+        app: llamastack
+    spec:
+      containers:
+        - name: llama-stack
+          image: {{ .Values.llamastack.image }}
+          ports:
+            - containerPort: {{ .Values.llamastack.port }}
+              name: http
+          command:
+            - llama
+            - stack
+            - run
+            - /config/run.yaml
+            - --port
+            - "{{ .Values.llamastack.port }}"
+          env:
+            - name: SQLITE_STORE_DIR
+              value: /tmp/llama-data
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: data
+              mountPath: /tmp/llama-data
+            - name: llama-home
+              mountPath: /opt/app-root/src/.llama
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+      volumes:
+        - name: config
+          configMap:
+            name: llama-stack-config
+        - name: data
+          emptyDir: {}
+        - name: llama-home
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: llamastack-service
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: llamastack
+spec:
+  selector:
+    app: llamastack
+  ports:
+    - port: {{ .Values.llamastack.port }}
+      targetPort: {{ .Values.llamastack.port }}
+      name: http

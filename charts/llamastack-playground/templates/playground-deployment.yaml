@@ -23,9 +23,11 @@ spec:
               name: http
           env:
             - name: LLAMA_STACK_ENDPOINT
-              value: "http://llamastack-service.{{ .Values.namespace }}.svc.cluster.local:{{ .Values.llamastack.port }}"
+              value: "http://llamastack-service:{{ .Values.llamastack.port }}"
             - name: DEFAULT_MODEL
               value: {{ .Values.model.id }}
+            - name: LLAMA_STACK_URL
+              value: "http://llamastack-service:{{ .Values.llamastack.port }}"
           resources:
             requests:
               memory: "256Mi"

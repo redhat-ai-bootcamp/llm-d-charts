@@ -7,11 +7,11 @@ data:
   run.yaml: |
     version: '2'
     image_name: vllm
+    metadata_store:
+      type: sqlite
+      db_path: /tmp/llama_stack_metadata.db
     apis:
-      - agents
       - inference
-      - safety
-      - tool_runtime
     models:
       - metadata: {}
         model_id: {{ .Values.model.id }}
@@ -19,32 +19,11 @@ data:
         provider_model_id: {{ .Values.model.providerModelId }}
         model_type: llm
     providers:
-      agents:
-        - provider_id: meta-reference
-          provider_type: inline::meta-reference
-          config:
-            persistence_store:
-              type: sqlite
-              db_path: /tmp/agents_store.db
-            responses_store:
-              type: sqlite
-              db_path: /tmp/responses_store.db
       inference:
         - provider_id: vllm
           provider_type: "remote::vllm"
           config:
             url: {{ include "llamastack.inferenceUrl" . | quote }}
             tls_verify: false
-        - provider_id: sentence-transformers
-          provider_type: inline::sentence-transformers
-      safety:
-        - provider_id: llama-guard
-          provider_type: inline::llama-guard
-          config: {}
-      tool_runtime:
-        - provider_id: brave-search
-          provider_type: remote::brave-search
-          config:
-            api_key: ${env.BRAVE_SEARCH_API_KEY:=}
     server:
       port: {{ .Values.llamastack.port }}

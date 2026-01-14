@@ -95,7 +95,7 @@
           "type": "string",
           "title": "Provider Model ID",
           "description": "HuggingFace model name",
-          "default": "Qwen/Qwen2.5-3B-Instruct"
+          "default": "Qwen/Qwen3-0.6B"
         }
       }
     },
@@ -133,7 +133,7 @@
           "type": "string",
           "title": "Image",
           "description": "Playground UI image",
-          "default": "quay.io/redhat-ai-services/llamastack-playground:latest"
+          "default": "quay.io/eformat/streamlit_client:0.2.15"
         }
       }
     }
