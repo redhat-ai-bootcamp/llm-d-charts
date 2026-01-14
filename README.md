@@ -17,22 +17,7 @@ Helm charts for demonstrating llm-d's intelligent routing vs vanilla vLLM, deplo
 
 > **Alternative (CLI)**: `oc apply -f https://raw.githubusercontent.com/adam-d-young/llm-d-charts/main/helmchartrepository.yaml`
 
-### 2. Enable Llama Stack Operator (for Playground chart)
-
-If you want to use the **llamastack-playground** chart for a chat UI, enable the Llama Stack Operator in your DataScienceCluster:
-
-1. Navigate to **Operators → Installed Operators → Open Data Hub Operator**
-2. Click on **Data Science Cluster** tab → select your DSC (e.g., `default-dsc`)
-3. Click **YAML** tab and add under `spec.components`:
-   ```yaml
-   llamastackoperator:
-     managementState: Managed
-   ```
-4. Click **Save**
-
-> **Alternative (CLI)**: `oc patch datasciencecluster default-dsc --type=merge -p '{"spec":{"components":{"llamastackoperator":{"managementState":"Managed"}}}}'`
-
-### 3. Create Required Namespaces
+### 2. Create Required Namespaces
 
 Before installing charts via click-ops, create the target namespaces:
 
