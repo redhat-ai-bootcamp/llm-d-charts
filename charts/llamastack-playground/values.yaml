@@ -1,0 +1,31 @@
+namespace: demo-llm
+
+# Inference backend configuration
+inference:
+  # Target backend: "vllm" or "llm-d"
+  target: llm-d
+  # Service name of the inference backend
+  vllmServiceName: qwen-predictor
+  llmdServiceName: qwen-gateway
+  # Namespace where the inference backend is deployed
+  backendNamespace: demo-llm
+  # Port for the inference service
+  port: 80
+
+# Model configuration
+model:
+  # Model ID used by Llama Stack
+  id: qwen
+  # Provider model ID (HuggingFace model name)
+  providerModelId: Qwen/Qwen2.5-3B-Instruct
+
+# Llama Stack server configuration
+llamastack:
+  replicas: 1
+  image: quay.io/eformat/distribution-remote-vllm:0.2.15
+  port: 8321
+
+# Playground configuration
+playground:
+  replicas: 1
+  image: quay.io/redhat-ai-services/llamastack-playground:latest

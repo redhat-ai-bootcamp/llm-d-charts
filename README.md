@@ -17,7 +17,22 @@ Helm charts for demonstrating llm-d's intelligent routing vs vanilla vLLM, deplo
 
 > **Alternative (CLI)**: `oc apply -f https://raw.githubusercontent.com/adam-d-young/llm-d-charts/main/helmchartrepository.yaml`
 
-### 2. Create Required Namespaces
+### 2. Enable Llama Stack Operator (for Playground chart)
+
+If you want to use the **llamastack-playground** chart for a chat UI, enable the Llama Stack Operator in your DataScienceCluster:
+
+1. Navigate to **Operators → Installed Operators → Open Data Hub Operator**
+2. Click on **Data Science Cluster** tab → select your DSC (e.g., `default-dsc`)
+3. Click **YAML** tab and add under `spec.components`:
+   ```yaml
+   llamastackoperator:
+     managementState: Managed
+   ```
+4. Click **Save**
+
+> **Alternative (CLI)**: `oc patch datasciencecluster default-dsc --type=merge -p '{"spec":{"components":{"llamastackoperator":{"managementState":"Managed"}}}}'`
+
+### 3. Create Required Namespaces
 
 Before installing charts via click-ops, create the target namespaces:
 
@@ -32,6 +47,7 @@ oc create namespace demo-llm
 | `vllm-baseline` | `demo-llm` |
 | `llm-d` | `demo-llm` |
 | `benchmark` | `demo-llm` |
+| `llamastack-playground` | `demo-llm` |
 
 > **Note**: CLI installation with `helm install --create-namespace` does not require pre-creating namespaces.
 
@@ -45,6 +61,7 @@ oc create namespace demo-llm
 | `vllm-baseline` | Vanilla vLLM deployment (4 replicas) for baseline comparison |
 | `llm-d` | llm-d with intelligent prefix-aware routing |
 | `benchmark` | Configurable benchmark job (target: vllm or llm-d) |
+| `llamastack-playground` | Chat UI via Llama Stack (connects to vllm or llm-d) |
 
 ## Workshop Flow
 
@@ -97,6 +114,19 @@ Install vanilla vLLM to establish baseline performance.
 3. Click **Install**
 4. Watch the Job logs
 5. Compare Grafana metrics with vLLM baseline
+
+### Step 7: (Optional) Deploy Chat UI
+Install the Llama Stack Playground for interactive chat with your deployed model.
+
+1. Ensure Llama Stack Operator is enabled (see Quick Setup step 2)
+2. Go to **Developer Console → +Add → Helm Chart** (ensure **demo-llm** project is selected)
+3. Select **LLM-D Demo Charts → Llamastack Playground**
+4. Configure:
+   - **Target Backend**: `llm-d` (or `vllm` if testing baseline)
+   - **Provider Model ID**: Your model name (e.g., `Qwen/Qwen2.5-3B-Instruct`)
+5. Click **Install**
+6. Once deployed, click the **llamastack-playground** route to open the chat UI
+7. Start chatting with your model!
 
 ## Expected Results
 

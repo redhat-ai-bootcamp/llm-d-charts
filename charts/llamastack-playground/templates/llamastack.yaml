@@ -1,0 +1,15 @@
+apiVersion: llamastack.io/v1alpha1
+kind: LlamaStackDistribution
+metadata:
+  name: llamastack
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.llamastack.replicas }}
+  server:
+    containerSpec:
+      name: llama-stack
+      port: {{ .Values.llamastack.port }}
+    distribution:
+      image: {{ .Values.llamastack.image }}
+    userConfig:
+      configMapName: llama-stack-config

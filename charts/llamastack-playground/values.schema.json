@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "namespace": {
+      "type": "string",
+      "title": "Namespace",
+      "description": "Namespace to deploy Llama Stack and Playground",
+      "default": "demo-llm"
+    },
+    "inference": {
+      "type": "object",
+      "title": "Inference Backend",
+      "properties": {
+        "target": {
+          "type": "string",
+          "title": "Target Backend",
+          "description": "Which inference backend to connect to",
+          "enum": ["vllm", "llm-d"],
+          "default": "llm-d"
+        },
+        "vllmServiceName": {
+          "type": "string",
+          "title": "vLLM Service Name",
+          "description": "Kubernetes service name for vLLM backend",
+          "default": "qwen-predictor"
+        },
+        "llmdServiceName": {
+          "type": "string",
+          "title": "llm-d Service Name", 
+          "description": "Kubernetes service name for llm-d backend",
+          "default": "qwen-gateway"
+        },
+        "backendNamespace": {
+          "type": "string",
+          "title": "Backend Namespace",
+          "description": "Namespace where the inference backend is deployed",
+          "default": "demo-llm"
+        },
+        "port": {
+          "type": "integer",
+          "title": "Backend Port",
+          "description": "Port of the inference service",
+          "default": 80
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "title": "Model Configuration",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Model ID",
+          "description": "Model identifier used by Llama Stack",
+          "default": "qwen"
+        },
+        "providerModelId": {
+          "type": "string",
+          "title": "Provider Model ID",
+          "description": "HuggingFace model name",
+          "default": "Qwen/Qwen2.5-3B-Instruct"
+        }
+      }
+    },
+    "llamastack": {
+      "type": "object",
+      "title": "Llama Stack Server",
+      "properties": {
+        "replicas": {
+          "type": "integer",
+          "title": "Replicas",
+          "description": "Number of Llama Stack server replicas",
+          "default": 1,
+          "minimum": 1
+        },
+        "image": {
+          "type": "string",
+          "title": "Image",
+          "description": "Llama Stack distribution image",
+          "default": "quay.io/eformat/distribution-remote-vllm:0.2.15"
+        }
+      }
+    },
+    "playground": {
+      "type": "object",
+      "title": "Playground UI",
+      "properties": {
+        "replicas": {
+          "type": "integer",
+          "title": "Replicas",
+          "description": "Number of Playground UI replicas",
+          "default": 1,
+          "minimum": 1
+        },
+        "image": {
+          "type": "string",
+          "title": "Image",
+          "description": "Playground UI image",
+          "default": "quay.io/redhat-ai-services/llamastack-playground:latest"
+        }
+      }
+    }
+  }
+}
