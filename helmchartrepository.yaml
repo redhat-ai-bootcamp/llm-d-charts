@@ -4,5 +4,5 @@ metadata:
   name: llm-d-demo
 spec:
   connectionConfig:
-    url: 'https://your-org.github.io/llm-d-charts/'
+    url: 'https://adam-d-young.github.io/llm-d-charts/'
   name: LLM-D Demo Charts
