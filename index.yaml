@@ -3,10 +3,10 @@ entries:
   llm-d:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-14T10:12:07.267981-06:00"
+    created: "2026-01-14T10:33:51.700922-06:00"
     description: llm-d deployment with intelligent prefix-aware routing for improved
       tail latency
-    digest: 8fc89e3e1d51926727c91b26fa01359c946b7d117437377a33c98a20991843d2
+    digest: e083f137139a070e494f1629433f564040af3613a6c6514169a52cc9c6124c6a
     keywords:
     - llm-d
     - inference
@@ -23,7 +23,7 @@ entries:
   llm-d-benchmark:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-14T10:12:07.268248-06:00"
+    created: "2026-01-14T10:33:51.701073-06:00"
     description: Benchmark job for comparing vLLM vs llm-d performance
     digest: 2b90357a0e9df38a752b041161a41bf802aec228d44fc9a163132f25db97c584
     keywords:
@@ -42,9 +42,9 @@ entries:
   llm-d-monitoring:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-14T10:12:07.268549-06:00"
+    created: "2026-01-14T10:33:51.701315-06:00"
     description: Prometheus and Grafana monitoring stack for LLM performance comparison
-    digest: fa0b6a781a1686d05f8228d07d280c97563b8c0356f9e997ec1261a9683b5b7f
+    digest: a71c3c5edce5759f22f0a837193ae79bb1e9e9bf0f689cef3288b0bd61f8e1f5
     keywords:
     - monitoring
     - prometheus
@@ -61,10 +61,10 @@ entries:
   vllm-baseline:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-14T10:12:07.268776-06:00"
+    created: "2026-01-14T10:33:51.701441-06:00"
     description: Vanilla vLLM deployment for baseline performance comparison against
       llm-d
-    digest: 0d3458b164647e637453182af1642afd6b23f2ca1858dc22f575615e78378492
+    digest: 73678b861698902d3cb791f46ea7b9d37916dd7e978a18ef658647cefb4a6776
     keywords:
     - vllm
     - inference
@@ -77,4 +77,4 @@ entries:
     urls:
     - https://adam-d-young.github.io/llm-d-charts/vllm-baseline-1.0.0.tgz
     version: 1.0.0
-generated: "2026-01-14T10:12:07.267342-06:00"
+generated: "2026-01-14T10:33:51.700379-06:00"
