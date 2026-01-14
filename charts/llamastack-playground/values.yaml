@@ -4,13 +4,20 @@ namespace: demo-llm
 inference:
   # Target backend: "vllm" or "llm-d"
   target: llm-d
-  # Service name of the inference backend
-  vllmServiceName: qwen-predictor
-  llmdServiceName: qwen-gateway
-  # Namespace where the inference backend is deployed
-  backendNamespace: demo-llm
-  # Port for the inference service
-  port: 80
+  
+  # vLLM backend configuration (direct KServe service)
+  vllm:
+    serviceName: qwen-predictor
+    namespace: demo-llm
+    port: 80
+    pathPrefix: ""
+  
+  # llm-d backend configuration (via Gateway API)
+  llmd:
+    serviceName: openshift-ai-inference-openshift-default
+    namespace: openshift-ingress
+    port: 80
+    pathPrefix: /demo-llm/qwen
 
 # Model configuration
 model:

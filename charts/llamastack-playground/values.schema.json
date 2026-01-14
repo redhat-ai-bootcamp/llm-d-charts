@@ -19,29 +19,65 @@
           "enum": ["vllm", "llm-d"],
           "default": "llm-d"
         },
-        "vllmServiceName": {
-          "type": "string",
-          "title": "vLLM Service Name",
-          "description": "Kubernetes service name for vLLM backend",
-          "default": "qwen-predictor"
+        "vllm": {
+          "type": "object",
+          "title": "vLLM Backend Config",
+          "description": "Configuration for direct vLLM/KServe access",
+          "properties": {
+            "serviceName": {
+              "type": "string",
+              "title": "Service Name",
+              "description": "Kubernetes service name for vLLM",
+              "default": "qwen-predictor"
+            },
+            "namespace": {
+              "type": "string",
+              "title": "Namespace",
+              "description": "Namespace where vLLM is deployed",
+              "default": "demo-llm"
+            },
+            "port": {
+              "type": "integer",
+              "title": "Port",
+              "default": 80
+            },
+            "pathPrefix": {
+              "type": "string",
+              "title": "Path Prefix",
+              "description": "URL path prefix (usually empty for direct access)",
+              "default": ""
+            }
+          }
         },
-        "llmdServiceName": {
-          "type": "string",
-          "title": "llm-d Service Name", 
-          "description": "Kubernetes service name for llm-d backend",
-          "default": "qwen-gateway"
-        },
-        "backendNamespace": {
-          "type": "string",
-          "title": "Backend Namespace",
-          "description": "Namespace where the inference backend is deployed",
-          "default": "demo-llm"
-        },
-        "port": {
-          "type": "integer",
-          "title": "Backend Port",
-          "description": "Port of the inference service",
-          "default": 80
+        "llmd": {
+          "type": "object",
+          "title": "llm-d Backend Config",
+          "description": "Configuration for llm-d via Gateway API",
+          "properties": {
+            "serviceName": {
+              "type": "string",
+              "title": "Gateway Service Name",
+              "description": "Gateway service name for llm-d",
+              "default": "openshift-ai-inference-openshift-default"
+            },
+            "namespace": {
+              "type": "string",
+              "title": "Gateway Namespace",
+              "description": "Namespace where the Gateway service is located",
+              "default": "openshift-ingress"
+            },
+            "port": {
+              "type": "integer",
+              "title": "Port",
+              "default": 80
+            },
+            "pathPrefix": {
+              "type": "string",
+              "title": "Path Prefix",
+              "description": "URL path prefix for Gateway API routing (e.g., /demo-llm/qwen)",
+              "default": "/demo-llm/qwen"
+            }
+          }
         }
       }
     },
