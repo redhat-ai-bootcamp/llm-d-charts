@@ -2,21 +2,26 @@
 
 Helm charts for demonstrating llm-d's intelligent routing vs vanilla vLLM, deployable via OpenShift click-ops.
 
-## Charts Included
+## Quick Setup
 
-| Chart | Description |
-|-------|-------------|
-| `monitoring` | Prometheus + Grafana with LLM performance dashboard |
-| `vllm-baseline` | Vanilla vLLM deployment (4 replicas) for baseline comparison |
-| `llm-d` | llm-d with intelligent prefix-aware routing |
-| `benchmark` | Configurable benchmark job (target: vllm or llm-d) |
+### 1. Add the Helm Repository (via OpenShift Console)
 
-## Prerequisites for Click-Ops Deployment
+1. Navigate to **Helm → Repositories** in the left sidebar
+2. Click **Create → HelmChartRepository**
+3. Select **Cluster scoped (HelmChartRepository)** to make charts available in all namespaces
+4. Fill in:
+   - **Name**: `llm-d-demo`
+   - **Display name**: `LLM-D Demo Charts`
+   - **URL**: `https://adam-d-young.github.io/llm-d-charts/`
+5. Click **Create**
 
-**Important**: Before installing charts via the OpenShift Developer Console (click-ops), you must create the target namespaces first. The console requires the namespace to exist to track Helm release status.
+> **Alternative (CLI)**: `oc apply -f https://raw.githubusercontent.com/adam-d-young/llm-d-charts/main/helmchartrepository.yaml`
+
+### 2. Create Required Namespaces
+
+Before installing charts via click-ops, create the target namespaces:
 
 ```bash
-# Create required namespaces
 oc create namespace llm-d-monitoring
 oc create namespace demo-llm
 ```
@@ -29,6 +34,17 @@ oc create namespace demo-llm
 | `benchmark` | `demo-llm` |
 
 > **Note**: CLI installation with `helm install --create-namespace` does not require pre-creating namespaces.
+
+---
+
+## Charts Included
+
+| Chart | Description |
+|-------|-------------|
+| `monitoring` | Prometheus + Grafana with LLM performance dashboard |
+| `vllm-baseline` | Vanilla vLLM deployment (4 replicas) for baseline comparison |
+| `llm-d` | llm-d with intelligent prefix-aware routing |
+| `benchmark` | Configurable benchmark job (target: vllm or llm-d) |
 
 ## Workshop Flow
 
@@ -98,15 +114,7 @@ Install vanilla vLLM to establish baseline performance.
 3. **Intelligent routing**: llm-d's prefix-aware routing ensures requests hit the replica with relevant cached data
 4. **No application changes**: Same API, same model, better performance
 
-## Registering Charts in OpenShift
-
-Apply the HelmChartRepository to make these charts available in the OpenShift Developer Console:
-
-```bash
-oc apply -f helmchartrepository.yaml
-```
-
-## Hosting Charts
+## Hosting Charts (for developers)
 
 To host these charts on GitHub Pages:
 
