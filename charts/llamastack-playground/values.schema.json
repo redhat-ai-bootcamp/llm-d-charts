@@ -120,20 +120,38 @@
     },
     "playground": {
       "type": "object",
-      "title": "Playground UI",
+      "title": "Playground UI (subchart)",
+      "description": "Configuration passed to redhat-ai-services/llamastack-playground subchart",
       "properties": {
-        "replicas": {
-          "type": "integer",
-          "title": "Replicas",
-          "description": "Number of Playground UI replicas",
-          "default": 1,
-          "minimum": 1
+        "llamastack": {
+          "type": "object",
+          "title": "Llama Stack Connection",
+          "properties": {
+            "endpointUrl": {
+              "type": "string",
+              "title": "Endpoint URL",
+              "description": "URL of the Llama Stack server",
+              "default": "http://llamastack-service:8321"
+            },
+            "defaultModel": {
+              "type": "string",
+              "title": "Default Model",
+              "description": "Default model ID for chat",
+              "default": "qwen"
+            }
+          }
         },
-        "image": {
-          "type": "string",
-          "title": "Image",
-          "description": "Playground UI image",
-          "default": "quay.io/eformat/streamlit_client:0.2.15"
+        "openshiftOauth": {
+          "type": "object",
+          "title": "OpenShift OAuth",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enable OAuth",
+              "description": "Secure with OpenShift OAuth Proxy",
+              "default": false
+            }
+          }
         }
       }
     }

@@ -1,0 +1,6 @@
+dependencies:
+- name: llamastack-playground
+  repository: https://redhat-ai-services.github.io/helm-charts/
+  version: 0.1.1
+digest: sha256:12dce1d072acc44426482acf879550c4fdc462c5e4ee097d29ce046762049896
+generated: "2026-01-14T16:53:22.845701-06:00"

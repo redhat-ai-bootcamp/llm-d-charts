@@ -32,7 +32,13 @@ llamastack:
   image: quay.io/eformat/distribution-remote-vllm:0.2.15
   port: 8321
 
-# Playground configuration
+# Playground subchart configuration (from redhat-ai-services)
 playground:
-  replicas: 1
-  image: quay.io/eformat/streamlit_client:0.2.15
+  fullnameOverride: llamastack-playground
+  llamastack:
+    endpointUrl: "http://llamastack-service:8321"
+    defaultModel: "qwen"
+  replicaCount: 1
+  # Disable OAuth proxy for simpler demo access
+  openshiftOauth:
+    enabled: false

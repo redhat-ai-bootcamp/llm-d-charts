@@ -2,5 +2,11 @@ apiVersion: v2
 name: llamastack-playground
 description: Llama Stack server + Playground UI for chatting with vLLM or llm-d models
 type: application
-version: 1.0.0
+version: 1.0.1
 appVersion: "0.2.15"
+
+dependencies:
+  - name: llamastack-playground
+    version: 0.1.1
+    repository: https://redhat-ai-services.github.io/helm-charts/
+    alias: playground
