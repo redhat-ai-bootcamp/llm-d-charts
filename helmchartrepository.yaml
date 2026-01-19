@@ -4,5 +4,5 @@ metadata:
   name: llm-d-demo
 spec:
   connectionConfig:
-    url: 'https://adam-d-young.github.io/llm-d-charts/'
+    url: 'https://redhat-ai-bootcamp.github.io/llm-d-charts/'
   name: LLM-D Demo Charts

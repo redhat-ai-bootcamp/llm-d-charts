@@ -12,10 +12,10 @@ Helm charts for demonstrating llm-d's intelligent routing vs vanilla vLLM, deplo
 4. Fill in:
    - **Name**: `llm-d-demo`
    - **Display name**: `LLM-D Demo Charts`
-   - **URL**: `https://adam-d-young.github.io/llm-d-charts/`
+   - **URL**: `https://redhat-ai-bootcamp.github.io/llm-d-charts/`
 5. Click **Create**
 
-> **Alternative (CLI)**: `oc apply -f https://raw.githubusercontent.com/adam-d-young/llm-d-charts/main/helmchartrepository.yaml`
+> **Alternative (CLI)**: `oc apply -f https://raw.githubusercontent.com/redhat-ai-bootcamp/llm-d-charts/main/helmchartrepository.yaml`
 
 ### 2. Create Required Namespaces
 
