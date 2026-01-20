@@ -7,7 +7,7 @@ inference:
   
   # vLLM backend configuration (direct KServe service)
   vllm:
-    serviceName: llama-predictor
+    serviceName: llama-vllm-single-predictor
     namespace: demo-llm
     port: 80
     pathPrefix: ""
