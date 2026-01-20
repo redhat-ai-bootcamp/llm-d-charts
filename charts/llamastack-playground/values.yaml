@@ -24,8 +24,9 @@ inference:
 model:
   # Model ID used by Llama Stack
   id: llama
-  # Provider model ID (HuggingFace model name) - must match what the backend is serving
-  providerModelId: llama-3-1-8b-instruct-fp8
+  # Provider model ID - must match what the backend is serving
+  # vllm-baseline serves as "llama-vllm-single", llm-d serves as "llama-3-1-8b-instruct-fp8"
+  providerModelId: llama-vllm-single
 
 # Llama Stack server configuration
 llamastack:

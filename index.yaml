@@ -3,7 +3,7 @@ entries:
   llamastack-playground:
   - apiVersion: v2
     appVersion: 0.2.15
-    created: "2026-01-19T20:11:06.356678-06:00"
+    created: "2026-01-19T20:13:08.715938-06:00"
     dependencies:
     - alias: playground
       name: llamastack-playground
@@ -11,7 +11,7 @@ entries:
       version: 0.1.1
     description: Llama Stack server + Playground UI for chatting with vLLM or llm-d
       models
-    digest: a0be56563fb779cc10d9c5bfd0b5045b331d5e216c5f930cd88d9cb4f06c24b4
+    digest: 88642bde03193aeb1e5c321dd25048cec3c41a41c06828038bbd9018209e4a86
     name: llamastack-playground
     type: application
     urls:
@@ -20,7 +20,7 @@ entries:
   llm-d:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T20:11:06.356861-06:00"
+    created: "2026-01-19T20:13:08.716154-06:00"
     description: llm-d deployment with intelligent prefix-aware routing for improved
       tail latency
     digest: 4dd28b1f203e4a5cf798997e702449d04b9ce8b19227ff4e76ce104ff9c42aa9
@@ -40,7 +40,7 @@ entries:
   llm-d-benchmark:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T20:11:06.357008-06:00"
+    created: "2026-01-19T20:13:08.716325-06:00"
     description: Benchmark job for comparing vLLM vs llm-d performance
     digest: b694aa9406f7b0eb485cf8b28a81b5e2fd2da815a01dc33e5b85d7f1d80de2f3
     keywords:
@@ -59,7 +59,7 @@ entries:
   llm-d-monitoring:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T20:11:06.357231-06:00"
+    created: "2026-01-19T20:13:08.716588-06:00"
     description: Prometheus and Grafana monitoring stack for LLM performance comparison
     digest: c4dbe3dd7213102ba3f573765d6054a99efb65b9518fc30ebe1833d441ac68ce
     keywords:
@@ -78,7 +78,7 @@ entries:
   vllm-baseline:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T20:11:06.357354-06:00"
+    created: "2026-01-19T20:13:08.716725-06:00"
     description: Vanilla vLLM deployment for baseline performance comparison against
       llm-d
     digest: d9f5110bdfa40dffec1136db8efe7279959bd7262a4972ebe5ec73314c02e2d2
@@ -94,4 +94,4 @@ entries:
     urls:
     - https://redhat-ai-bootcamp.github.io/llm-d-charts/vllm-baseline-1.0.0.tgz
     version: 1.0.0
-generated: "2026-01-19T20:11:06.356277-06:00"
+generated: "2026-01-19T20:13:08.715468-06:00"
