@@ -123,6 +123,29 @@
           "default": "openshift-ingress"
         }
       }
+    },
+    "hardwareProfile": {
+      "type": "object",
+      "title": "Hardware Profile (Optional)",
+      "description": "RHOAI Dashboard integration - creates a HardwareProfile CR",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "Enable Hardware Profile",
+          "description": "Create HardwareProfile CR for RHOAI dashboard integration",
+          "default": false
+        },
+        "name": {
+          "type": "string",
+          "title": "Profile Name",
+          "default": "gpu-profile"
+        },
+        "namespace": {
+          "type": "string",
+          "title": "Profile Namespace",
+          "default": "redhat-ods-applications"
+        }
+      }
     }
   }
 }
