@@ -31,13 +31,13 @@ scrapeTargets:
   vllm:
     enabled: true
     namespace: demo-llm
-    serviceName: qwen-vllm-lb
+    serviceName: llama-vllm-lb
     port: 8000
     path: /metrics
   # llm-d metrics endpoint  
   llmd:
     enabled: true
     namespace: demo-llm
-    labelSelector: app.kubernetes.io/name=qwen
+    labelSelector: app.kubernetes.io/name=llama
     port: 8000
     path: /metrics

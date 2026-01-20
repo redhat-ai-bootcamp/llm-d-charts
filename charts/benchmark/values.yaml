@@ -51,5 +51,5 @@ job:
 
 # Endpoint configuration (auto-configured based on target)
 endpoints:
-  vllm: "http://qwen-vllm-lb.demo-llm.svc.cluster.local:8000/v1"
-  llmd: "http://openshift-ai-inference-openshift-default.openshift-ingress.svc.cluster.local/demo-llm/qwen/v1"
+  vllm: "http://llama-vllm-lb.demo-llm.svc.cluster.local:8000/v1"
+  llmd: "http://openshift-ai-inference-openshift-default.openshift-ingress.svc.cluster.local/demo-llm/llama/v1"

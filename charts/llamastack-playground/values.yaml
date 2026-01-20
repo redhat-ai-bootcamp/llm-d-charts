@@ -7,7 +7,7 @@ inference:
   
   # vLLM backend configuration (direct KServe service)
   vllm:
-    serviceName: qwen-predictor
+    serviceName: llama-predictor
     namespace: demo-llm
     port: 80
     pathPrefix: ""
@@ -17,12 +17,12 @@ inference:
     serviceName: openshift-ai-inference-openshift-default
     namespace: openshift-ingress
     port: 80
-    pathPrefix: /demo-llm/qwen
+    pathPrefix: /demo-llm/llama
 
 # Model configuration
 model:
   # Model ID used by Llama Stack
-  id: qwen
+  id: llama
   # Provider model ID (HuggingFace model name) - must match what the backend is serving
   providerModelId: llama-3-1-8b-instruct-fp8
 
@@ -37,7 +37,7 @@ playground:
   fullnameOverride: llamastack-playground
   llamastack:
     endpointUrl: "http://llamastack-service:8321"
-    defaultModel: "qwen"
+    defaultModel: "llama"
   replicaCount: 1
   # Disable OAuth proxy for simpler demo access
   openshiftOauth:

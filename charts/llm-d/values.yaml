@@ -6,7 +6,7 @@ model:
   # Model to serve (Hugging Face path)
   name: "llama-3-1-8b-instruct-fp8"
   # Display name for OpenShift
-  displayName: "qwen"
+  displayName: "llama"
   # Maximum model context length
   maxModelLen: 16000
 
