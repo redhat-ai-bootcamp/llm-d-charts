@@ -94,6 +94,29 @@
           }
         }
       }
+    },
+    "gateway": {
+      "type": "object",
+      "title": "Gateway Configuration",
+      "description": "Gateway API configuration for routing",
+      "properties": {
+        "create": {
+          "type": "boolean",
+          "title": "Create Gateway",
+          "description": "Set to false if Gateway already exists on the cluster",
+          "default": true
+        },
+        "className": {
+          "type": "string",
+          "title": "Gateway Class Name",
+          "default": "openshift-default"
+        },
+        "namespace": {
+          "type": "string",
+          "title": "Gateway Namespace",
+          "default": "openshift-ingress"
+        }
+      }
     }
   }
 }

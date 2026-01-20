@@ -3,7 +3,7 @@ entries:
   llamastack-playground:
   - apiVersion: v2
     appVersion: 0.2.15
-    created: "2026-01-19T19:34:32.882657-06:00"
+    created: "2026-01-19T19:37:43.375715-06:00"
     dependencies:
     - alias: playground
       name: llamastack-playground
@@ -20,10 +20,10 @@ entries:
   llm-d:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T19:34:32.88301-06:00"
+    created: "2026-01-19T19:37:43.375917-06:00"
     description: llm-d deployment with intelligent prefix-aware routing for improved
       tail latency
-    digest: 29085f172d4aaf8566e87f45e9a46204ebd3acdc7ef93a6d60be542bd97b7c9e
+    digest: ef1e2185f84a0854c385ffef1c2d50d32c999813a00f6c5c35c26d123fc23b2f
     keywords:
     - llm-d
     - inference
@@ -40,7 +40,7 @@ entries:
   llm-d-benchmark:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T19:34:32.88333-06:00"
+    created: "2026-01-19T19:37:43.376057-06:00"
     description: Benchmark job for comparing vLLM vs llm-d performance
     digest: 8300146d35e39b146d76a84432725798a8b1cb5f7b3c147a9f274d42ee2b661d
     keywords:
@@ -59,7 +59,7 @@ entries:
   llm-d-monitoring:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T19:34:32.88357-06:00"
+    created: "2026-01-19T19:37:43.376384-06:00"
     description: Prometheus and Grafana monitoring stack for LLM performance comparison
     digest: dbc79d0fac9e0635cc93baf2426185eba45b9e4c2029d24096f2e896407e93c6
     keywords:
@@ -78,7 +78,7 @@ entries:
   vllm-baseline:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T19:34:32.883687-06:00"
+    created: "2026-01-19T19:37:43.376664-06:00"
     description: Vanilla vLLM deployment for baseline performance comparison against
       llm-d
     digest: 85816197c5089f705e25d26eb4e40fb10ff66cd5d4515e553e237cc37532f2f2
@@ -94,4 +94,4 @@ entries:
     urls:
     - https://redhat-ai-bootcamp.github.io/llm-d-charts/vllm-baseline-1.0.0.tgz
     version: 1.0.0
-generated: "2026-01-19T19:34:32.882221-06:00"
+generated: "2026-01-19T19:37:43.375282-06:00"
