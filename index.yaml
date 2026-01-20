@@ -3,7 +3,7 @@ entries:
   llamastack-playground:
   - apiVersion: v2
     appVersion: 0.2.15
-    created: "2026-01-19T19:15:39.049485-06:00"
+    created: "2026-01-19T19:16:36.04994-06:00"
     dependencies:
     - alias: playground
       name: llamastack-playground
@@ -11,7 +11,7 @@ entries:
       version: 0.1.1
     description: Llama Stack server + Playground UI for chatting with vLLM or llm-d
       models
-    digest: 67e6415d119a36744eda72f153b7be02aacdae8cdde8c0da6255167f37795542
+    digest: d957ac3bde6478182589051647358745f2696bba4c11f38f9c56facc75ea3d97
     name: llamastack-playground
     type: application
     urls:
@@ -20,10 +20,10 @@ entries:
   llm-d:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T19:15:39.049684-06:00"
+    created: "2026-01-19T19:16:36.050124-06:00"
     description: llm-d deployment with intelligent prefix-aware routing for improved
       tail latency
-    digest: c2d3786b9f64d319e273a183b57e79a39d4af583c7b76cbc3280b2b193fa64e3
+    digest: e4ed68784dd07f7cb4ac63e5b00a56e63cb717fe2073b5d8738220b25246ec41
     keywords:
     - llm-d
     - inference
@@ -40,9 +40,9 @@ entries:
   llm-d-benchmark:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T19:15:39.049865-06:00"
+    created: "2026-01-19T19:16:36.050273-06:00"
     description: Benchmark job for comparing vLLM vs llm-d performance
-    digest: 4c1d7a13affebcc8c85c6debd7204c43c2f7087a53eada020568eacaad1006e2
+    digest: 97201219f7f4d88b829a5342d2c9ad3792ae2f3d94e0ce31bb084595aa6329a8
     keywords:
     - benchmark
     - llm
@@ -59,7 +59,7 @@ entries:
   llm-d-monitoring:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T19:15:39.050158-06:00"
+    created: "2026-01-19T19:16:36.050635-06:00"
     description: Prometheus and Grafana monitoring stack for LLM performance comparison
     digest: 43bb640f9dae1c178e834c5f1fbe54629933ea573e9d12b9cde31b2baea10e0d
     keywords:
@@ -78,10 +78,10 @@ entries:
   vllm-baseline:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T19:15:39.050306-06:00"
+    created: "2026-01-19T19:16:36.051111-06:00"
     description: Vanilla vLLM deployment for baseline performance comparison against
       llm-d
-    digest: 113282c26da67b39099d3e0715ac79bc6e6f08ce57c52d3da3926b4cc2904eea
+    digest: 28f46baac915ddd0bafb172f07227326e7ccbfcba6200b939d5861149577ff2c
     keywords:
     - vllm
     - inference
@@ -94,4 +94,4 @@ entries:
     urls:
     - https://redhat-ai-bootcamp.github.io/llm-d-charts/vllm-baseline-1.0.0.tgz
     version: 1.0.0
-generated: "2026-01-19T19:15:39.049005-06:00"
+generated: "2026-01-19T19:16:36.049511-06:00"

@@ -24,7 +24,7 @@ model:
   # Model ID used by Llama Stack
   id: qwen
   # Provider model ID (HuggingFace model name) - must match what the backend is serving
-  providerModelId: Qwen/Qwen3-0.6B
+  providerModelId: llama-3-1-8b-instruct-fp8
 
 # Llama Stack server configuration
 llamastack:

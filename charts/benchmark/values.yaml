@@ -31,7 +31,7 @@ guidellm:
   promptTokens: 256
   outputTokens: 128
   # Model processor for tokenization
-  processor: "Qwen/Qwen3-0.6B"
+  processor: "meta-llama/Llama-3.1-8B-Instruct"
 
 # Resource limits for benchmark job
 resources:

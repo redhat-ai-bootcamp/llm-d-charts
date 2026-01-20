@@ -4,7 +4,7 @@ namespace: demo-llm
 
 model:
   # Model to serve (Hugging Face path)
-  name: "Qwen/Qwen3-0.6B"
+  name: "llama-3-1-8b-instruct-fp8"
   # Maximum model context length
   maxModelLen: 16000
 
