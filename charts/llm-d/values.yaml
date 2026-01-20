@@ -59,5 +59,7 @@ hardwareProfile:
 
 # Gateway configuration
 gateway:
+  # Set to false if Gateway already exists on cluster
+  create: true
   className: "openshift-default"
   namespace: "openshift-ingress"
