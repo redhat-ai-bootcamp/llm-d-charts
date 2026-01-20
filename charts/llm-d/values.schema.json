@@ -14,17 +14,23 @@
       "type": "object",
       "title": "Model Configuration",
       "properties": {
+        "uri": {
+          "type": "string",
+          "title": "Model URI",
+          "description": "OCI or HuggingFace URI (e.g., oci://registry.redhat.io/... or hf://meta-llama/...)",
+          "default": "oci://registry.redhat.io/rhelai1/modelcar-llama-3-1-8b-instruct-fp8-dynamic:1.5"
+        },
         "name": {
           "type": "string",
           "title": "Model Name",
-          "description": "Hugging Face model path (e.g., Qwen/Qwen3-0.6B)",
-          "default": "Qwen/Qwen3-0.6B"
+          "description": "Model identifier name",
+          "default": "llama-3-1-8b-instruct-fp8"
         },
         "displayName": {
           "type": "string",
           "title": "Display Name",
           "description": "Display name for the model in OpenShift",
-          "default": "qwen"
+          "default": "llama"
         },
         "maxModelLen": {
           "type": "integer",

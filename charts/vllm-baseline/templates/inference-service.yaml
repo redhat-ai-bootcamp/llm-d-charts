@@ -1,7 +1,7 @@
 apiVersion: serving.kserve.io/v1beta1
 kind: InferenceService
 metadata:
-  name: qwen-vllm
+  name: llama-vllm-single
   namespace: {{ .Values.namespace }}
   annotations:
     serving.kserve.io/deploymentMode: RawDeployment
@@ -24,7 +24,7 @@ spec:
           memory: {{ .Values.resources.requests.memory }}
           nvidia.com/gpu: {{ .Values.resources.requests.gpu | quote }}
       runtime: vllm-runtime
-      storageUri: 'hf://{{ .Values.model.name }}'
+      storageUri: '{{ .Values.model.uri }}'
     {{- if .Values.tolerations.enabled }}
     tolerations:
       - key: {{ .Values.tolerations.key | quote }}

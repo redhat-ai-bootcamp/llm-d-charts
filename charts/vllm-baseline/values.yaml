@@ -3,7 +3,9 @@
 namespace: demo-llm
 
 model:
-  # Model to serve (Hugging Face path)
+  # Model URI (OCI or HuggingFace hf://)
+  uri: "oci://registry.redhat.io/rhelai1/modelcar-llama-3-1-8b-instruct-fp8-dynamic:1.5"
+  # Model name identifier
   name: "llama-3-1-8b-instruct-fp8"
   # Maximum model context length
   maxModelLen: 16000

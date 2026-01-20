@@ -3,7 +3,7 @@ entries:
   llamastack-playground:
   - apiVersion: v2
     appVersion: 0.2.15
-    created: "2026-01-19T19:37:43.375715-06:00"
+    created: "2026-01-19T19:47:21.15159-06:00"
     dependencies:
     - alias: playground
       name: llamastack-playground
@@ -11,7 +11,7 @@ entries:
       version: 0.1.1
     description: Llama Stack server + Playground UI for chatting with vLLM or llm-d
       models
-    digest: 7694b68adc1308216efda0df7bdb3e13224cd91821679a0b51d6c1510a635211
+    digest: 09ba4a6cdfba640d300f46f73f6292978641df38d042399bd3419312c03152c5
     name: llamastack-playground
     type: application
     urls:
@@ -20,10 +20,10 @@ entries:
   llm-d:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T19:37:43.375917-06:00"
+    created: "2026-01-19T19:47:21.151774-06:00"
     description: llm-d deployment with intelligent prefix-aware routing for improved
       tail latency
-    digest: ef1e2185f84a0854c385ffef1c2d50d32c999813a00f6c5c35c26d123fc23b2f
+    digest: 84a08fd5a4631064e687fec2b14e6fdc38f978bb9df77516252bfc519f7bb263
     keywords:
     - llm-d
     - inference
@@ -40,9 +40,9 @@ entries:
   llm-d-benchmark:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T19:37:43.376057-06:00"
+    created: "2026-01-19T19:47:21.151922-06:00"
     description: Benchmark job for comparing vLLM vs llm-d performance
-    digest: 8300146d35e39b146d76a84432725798a8b1cb5f7b3c147a9f274d42ee2b661d
+    digest: f2088aef71465122a123c3b20aa6f1c367b31febeae7bb9e63aa548c9926d6a5
     keywords:
     - benchmark
     - llm
@@ -59,9 +59,9 @@ entries:
   llm-d-monitoring:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T19:37:43.376384-06:00"
+    created: "2026-01-19T19:47:21.152159-06:00"
     description: Prometheus and Grafana monitoring stack for LLM performance comparison
-    digest: dbc79d0fac9e0635cc93baf2426185eba45b9e4c2029d24096f2e896407e93c6
+    digest: c4dbe3dd7213102ba3f573765d6054a99efb65b9518fc30ebe1833d441ac68ce
     keywords:
     - monitoring
     - prometheus
@@ -78,10 +78,10 @@ entries:
   vllm-baseline:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-01-19T19:37:43.376664-06:00"
+    created: "2026-01-19T19:47:21.152282-06:00"
     description: Vanilla vLLM deployment for baseline performance comparison against
       llm-d
-    digest: 85816197c5089f705e25d26eb4e40fb10ff66cd5d4515e553e237cc37532f2f2
+    digest: ce5e9d0c338bb0da604760a9f6ff8af5fa16c83df9938577ab203efc5655a42f
     keywords:
     - vllm
     - inference
@@ -94,4 +94,4 @@ entries:
     urls:
     - https://redhat-ai-bootcamp.github.io/llm-d-charts/vllm-baseline-1.0.0.tgz
     version: 1.0.0
-generated: "2026-01-19T19:37:43.375282-06:00"
+generated: "2026-01-19T19:47:21.151169-06:00"

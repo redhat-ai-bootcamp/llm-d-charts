@@ -4,15 +4,19 @@ metadata:
   name: {{ .Values.model.displayName }}
   namespace: {{ .Values.namespace }}
   annotations:
-    opendatahub.io/hardware-profile-name: {{ .Values.hardwareProfile.name }}
-    opendatahub.io/hardware-profile-namespace: {{ .Values.hardwareProfile.namespace }}
     opendatahub.io/model-type: generative
     openshift.io/display-name: {{ .Values.model.displayName }}
     security.opendatahub.io/enable-auth: 'false'
+    prometheus.io/path: /metrics
+    prometheus.io/port: "8000"
+    {{- if .Values.hardwareProfile.enabled }}
+    opendatahub.io/hardware-profile-name: {{ .Values.hardwareProfile.name }}
+    opendatahub.io/hardware-profile-namespace: {{ .Values.hardwareProfile.namespace }}
+    {{- end }}
 spec:
   replicas: {{ .Values.replicas }}
   model:
-    uri: hf://{{ .Values.model.name }}
+    uri: {{ .Values.model.uri }}
     name: {{ .Values.model.name }}
   router:
     scheduler:

@@ -1,3 +1,4 @@
+{{- if .Values.hardwareProfile.enabled }}
 apiVersion: infrastructure.opendatahub.io/v1
 kind: HardwareProfile
 metadata:
@@ -27,3 +28,4 @@ spec:
       maxCount: {{ .Values.hardwareProfile.gpu.max }}
       minCount: {{ .Values.hardwareProfile.gpu.min }}
       resourceType: Accelerator
+{{- end }}
