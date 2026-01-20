@@ -4,6 +4,8 @@ metadata:
   name: llama-vllm-single
   namespace: {{ .Values.namespace }}
   annotations:
+    openshift.io/display-name: Llama 3.1 8B FP8 Single
+    security.opendatahub.io/enable-auth: "false"
     serving.kserve.io/deploymentMode: RawDeployment
 spec:
   predictor:
@@ -23,8 +25,10 @@ spec:
           cpu: {{ .Values.resources.requests.cpu | quote }}
           memory: {{ .Values.resources.requests.memory }}
           nvidia.com/gpu: {{ .Values.resources.requests.gpu | quote }}
-      runtime: vllm-runtime
+      runtime: rhaiis-cuda
       storageUri: '{{ .Values.model.uri }}'
+      args:
+        - --max-model-len={{ .Values.model.maxModelLen }}
     {{- if .Values.tolerations.enabled }}
     tolerations:
       - key: {{ .Values.tolerations.key | quote }}

@@ -51,5 +51,7 @@ job:
 
 # Endpoint configuration (auto-configured based on target)
 endpoints:
-  vllm: "http://llama-vllm-lb.demo-llm.svc.cluster.local:8000/v1"
+  # vllm-baseline service (KServe adds -predictor suffix)
+  vllm: "http://llama-vllm-single-predictor.demo-llm.svc.cluster.local/v1"
+  # llm-d via Gateway
   llmd: "http://openshift-ai-inference-openshift-default.openshift-ingress.svc.cluster.local/demo-llm/llama/v1"

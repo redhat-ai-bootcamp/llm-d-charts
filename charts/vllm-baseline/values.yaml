@@ -10,7 +10,8 @@ model:
   # Maximum model context length
   maxModelLen: 16000
 
-replicas: 4
+# Single instance baseline (change to 4 for scaled comparison)
+replicas: 1
 
 resources:
   requests:
