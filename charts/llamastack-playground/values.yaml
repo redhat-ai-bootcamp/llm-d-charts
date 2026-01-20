@@ -6,10 +6,11 @@ inference:
   target: llm-d
   
   # vLLM backend configuration (direct KServe service)
+  # Note: headless services don't do port mapping, use actual pod port (8080)
   vllm:
     serviceName: llama-vllm-single-predictor
     namespace: demo-llm
-    port: 80
+    port: 8080
     pathPrefix: ""
   
   # llm-d backend configuration (via Gateway API)
